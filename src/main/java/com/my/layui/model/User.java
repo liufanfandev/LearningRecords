@@ -1,6 +1,8 @@
 package com.my.layui.model;
 
+
 public class User {
+	
     private Long id;
 
     private String name;

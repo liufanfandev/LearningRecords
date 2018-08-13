@@ -1,9 +1,13 @@
 package com.my.layui.dao;
 
 import com.my.layui.model.User;
+
+
 import java.util.List;
 
-public interface UserMapper {
+import org.springframework.stereotype.Repository;
+
+public interface UserMapper{
     int deleteByPrimaryKey(Long id);
 
     int insert(User record);

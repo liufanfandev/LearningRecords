@@ -11,4 +11,9 @@ public class PageController {
     public String login(){
         return "index";
     }
+	
+	@RequestMapping("/layui")
+    public String layui(){
+        return "layui/main";
+    }
 }
