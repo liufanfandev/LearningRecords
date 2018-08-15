@@ -13,14 +13,15 @@
         <div class="layui-header">
             <div class="layui-main">
                 <!-- logo -->
-                <a href="/" style="color: #c2c2c2; font-size: 18px; line-height: 60px;">cms后台模板</a>
+                <!-- <a href="/" style="color: #c2c2c2; font-size: 18px; line-height: 60px;">cms后台模板</a> -->
+                <img src="${pathView}/images/u11-white.png" style="height:60px" >
                 <!-- 水平导航 -->
                 <ul class="layui-nav" style="position: absolute; top: 0; right: 0; background: none;">
                     <li class="layui-nav-item">
-                        <a href="javascript:;"> 进入前台</a>
+                        <a href="javascript:;">了解更多</a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;"> 梦想星辰大海 </a>
+                        <a href="javascript:;"> 刘一帆</a>
                         <dl class="layui-nav-child">
                             <dd>
                                 <a href="javascript:;"> 个人信息</a>
@@ -56,11 +57,37 @@
 
         <!-- 底部 -->
         <div class="layui-footer" style="text-align: center; line-height: 44px;">
-            Copyright © 2017 <a href="http://www.kiscms.com" target="_blank">kiscms</a> Powered by 梦想星辰大海
+            北京力控华康科技有限公司版权所有  Copyright © 2018
         </div>
     </div>
 	
-<script>
-</script>
+ <script type="text/javascript">
+        /**
+         * 对layui进行全局配置
+         */
+        layui.config({
+            base: '${pathView}/js/laymodules/'
+        });
+
+        /**
+         * 初始化整个cms骨架
+         */
+        layui.use(['cms'], function() {
+            var cms = layui.cms('left-nav', 'top-tab');
+
+            cms.addNav([
+                
+                {id: 2, pid: 0, node: '搜索引擎', url: ''},
+                {id: 3, pid: 2, node: '百度', url: 'https://www.baidu.com/'},
+                {id: 4, pid: 2, node: '必应', url: 'http://cn.bing.com/'},
+                {id: 5, pid: 2, node: '360', url: 'https://www.so.com/'},
+                {id: 6, pid: 2, node: '搜狗', url: 'https://www.sogou.com/'},
+            ], 0, 'id', 'pid', 'node', 'url');
+
+            cms.bind(60 + 41 + 20 + 44); //头部高度 + 顶部切换卡标题高度 + 顶部切换卡内容padding + 底部高度
+
+            cms.clickLI(0);
+        });
+    </script>
 </body>
 </html>
