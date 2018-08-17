@@ -17,8 +17,6 @@
 	//资源文件路径
 	request.setAttribute("pathView", pathView);
 %>
-<link type="text/css" rel="stylesheet" href="${pathView}/layui/css/layui.css" media="all"/>
+<link type="text/css" rel="stylesheet" href="${pathView}/layui/css/layui.css"/>
 <script type="text/javascript" src="${pathView}/layui/layui.js"></script>
-<%-- <script type="text/javascript" src="${pathView}/jQuery/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="${pathView}/jQuery/jquery.json.min.js"></script>
-<script type="text/javascript" src="${pathView}/jQuery/jQueryExt.js"></script> --%>
+

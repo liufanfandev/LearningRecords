@@ -16,4 +16,14 @@ public class PageController {
     public String layuiUser(){
         return "layui/user";
     }
+	
+	@RequestMapping("/layui/userAdd")
+    public String layuiUserAdd(){
+        return "layui/userAdd";
+    }
+	
+	@RequestMapping("/layui/userEdit")
+    public String layuiUserEdit(){
+        return "layui/userEdit";
+    }
 }

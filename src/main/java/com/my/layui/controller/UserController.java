@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,7 +61,7 @@ public class UserController {
 	public Object addUser(User user){
 		Msg msg = new Msg();
 		int result = userService.addUser(user);
-		if(result == 0){
+		if(result != 0){
 			msg.setCode(0);
 			msg.setMsg("添加成功！");
 		}else{
@@ -75,7 +76,7 @@ public class UserController {
 	public Object updateUser(User user){
 		Msg msg = new Msg();
 		int result = userService.update(user);
-		if(result == 0){
+		if(result != 0){
 			msg.setCode(0);
 			msg.setMsg("修改成功！");
 		}else{
@@ -85,16 +86,17 @@ public class UserController {
 		return msg;
 	}
 	
-	@RequestMapping(value = "/user",method = RequestMethod.DELETE)
+	@RequestMapping(value = "/user/{id}",method = RequestMethod.DELETE)
 	@ResponseBody
-	public Object updateUser(Integer id){
+	public Object updateUser(@PathVariable("id") Integer id){
 		Msg msg = new Msg();
+		//int i = Integer.parseInt(id);
 		int result = userService.deleteById(id);
-		if(result == 0){
+		if(result != 0){
 			msg.setCode(0);
 			msg.setMsg("删除成功！");
 		}else{
-			msg.setCode(-1);
+			msg.setCode(-1);	
 			msg.setMsg("删除失败！");
 		}
 		return msg;

@@ -29,7 +29,9 @@ public class UserServiceImpl implements UserService{
 	public PageInfo<User> getPageUser(int pageNum,int pageSize) {
 		
 		PageHelper.startPage(pageNum, pageSize);
-		List<User> list = userMapper.selectAll();
+		Example example = new Example(User.class);
+		example.setOrderByClause("id desc");
+		List<User> list = userMapper.selectByExample(example);
 		PageInfo<User> pageInfo = new PageInfo<>(list);
 		return pageInfo;
 	}
