@@ -73,7 +73,7 @@ public class Countries {
 		private class Iter implements Iterator<Map.Entry<String, String>>{
 
 			//private Entry entry = new Entry(-1);
-			
+			 
 			@Override
 			public boolean hasNext() {
 				return false;
