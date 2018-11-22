@@ -27,10 +27,46 @@ public class TableCreator {
 			List<String> columnDefs = new ArrayList<String>();
 			for (Field field : cl.getDeclaredFields()) {
 				String columnName = null;
-				Annotation[] anno = field.getDeclaredAnnotations();
-				
+				Annotation[] anns = field.getDeclaredAnnotations();
+				if(anns.length <1){
+					continue;
+				}
+				if(anns[0] instanceof SQLInteger){
+					SQLInteger sInt = (SQLInteger)anns[0];
+					if(sInt.name().length() < 1){
+						columnName = field.getName().toUpperCase();
+					}else{
+						columnName = sInt.name();
+					}
+					columnDefs.add(columnName+"INT"+getConstraints(sInt.constraints()));
+				}
+				if(anns[0] instanceof SQLString){
+					SQLString sString = (SQLString)anns[0];
+					if(sString.name().length() < 1){
+						columnName = field.getName().toUpperCase();
+					}else{
+						columnName = sString.name();
+					}
+					columnDefs.add(columnName+" VARCHAR("+sString.value()+")"+getConstraints(sString.constraints()));
+				}
+				StringBuilder commond = new StringBuilder("CREATE TABLE"+tableName+"(");
+				for (String colmnuDef : columnDefs) {
+					commond.append("\n  "+colmnuDef+",");
+				}
+				String tableCreate = commond.substring(0, commond.length()-1)+");";
+				System.out.println("TABLE CREATE SQL FOR"+tableName+" is: \n"+tableCreate);
 			}
-			
 		}
+	}
+	
+	private static String getConstraints(Constraints con){
+		String constraints = "";
+		if(!con.allowNull())
+			constraints += "NOT NULL";
+		if(con.primaryKey())
+			constraints += "PRIMARY KEY";
+		if(con.unique())
+			constraints += "UNIQUE";
+		return constraints;
 	}
 }

@@ -1,5 +1,6 @@
 package thinking.annotation;
 
+@DBTable
 public class Member {
 
 	@SQLString(30)
