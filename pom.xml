@@ -1,0 +1,146 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.my</groupId>
+  <artifactId>test</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>test Maven Webapp</name>
+  <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.4.RELEASE</version>
+    </parent>
+    
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.7</java.version>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+      <!-- tomcat 的支持.-->
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-tomcat</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.apache.tomcat.embed</groupId>
+           <artifactId>tomcat-embed-jasper</artifactId>
+       </dependency>
+    
+    <dependency>
+         <groupId>mysql</groupId>
+         <artifactId>mysql-connector-java</artifactId>
+        <!--  <scope>runtime</scope> -->
+    </dependency>
+    <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-test</artifactId>
+         <scope>test</scope>
+     </dependency>
+     
+     <dependency>
+         <groupId>org.mybatis.spring.boot</groupId>
+         <artifactId>mybatis-spring-boot-starter</artifactId>
+         <version>1.1.1</version>
+     </dependency>
+     <dependency>
+   		<groupId>com.alibaba</groupId>
+   		<artifactId>druid</artifactId>
+   		<version>1.1.10</version>
+	</dependency>
+	<!-- fastjson -->
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>fastjson</artifactId>
+		<version>1.2.4</version>
+	</dependency>
+     <dependency>
+    	<groupId>tk.mybatis</groupId>
+    	<artifactId>mapper-spring-boot-starter</artifactId>
+    	<version>2.0.3</version>
+	</dependency>
+	<dependency>
+    	<groupId>com.github.pagehelper</groupId>
+    	<artifactId>pagehelper-spring-boot-starter</artifactId>
+    	<version>1.2.5</version>
+	</dependency>
+
+    <!-- servlet依赖. -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<scope>provided</scope>
+	</dependency>
+    
+  </dependencies>
+  
+  <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.6</version>
+                <configuration>
+                    <configurationFile>
+        				${basedir}/src/main/resources/generatorConfig.xml
+      			    </configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+                <!--插件需要单独配置数据库链接-->
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.30</version>
+                    </dependency>
+                    <dependency>
+        				<groupId>tk.mybatis</groupId>
+        				<artifactId>mapper</artifactId>
+        				<version>4.0.0</version>
+      				</dependency>
+                </dependencies>
+            </plugin>
+            
+           
+            
+        </plugins>
+    </build>
+</project>
