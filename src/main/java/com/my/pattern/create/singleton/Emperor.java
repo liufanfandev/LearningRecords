@@ -1,4 +1,4 @@
-package com.my.pattern.create;
+package com.my.pattern.create.singleton;
 /**
  * 单例模式普通类
  *
