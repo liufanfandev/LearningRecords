@@ -1,5 +1,8 @@
 package com.my.pattern.create.singleton;
 
+/**
+ * 饿汉式单例模式，线程安全
+ */
 public class Singleton {
 
 	private static final Singleton singleton = new Singleton();

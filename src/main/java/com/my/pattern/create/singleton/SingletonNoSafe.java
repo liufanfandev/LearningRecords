@@ -1,5 +1,7 @@
 package com.my.pattern.create.singleton;
-
+/**
+ * 懒汉式单例模式
+ */
 public class SingletonNoSafe {
 
 	private static SingletonNoSafe singleton = null;
